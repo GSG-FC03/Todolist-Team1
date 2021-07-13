@@ -1,27 +1,35 @@
-## Project Name
-   - _**ToDo list**_
+
+# **Todo App | Team1**
    
 
 
-##   Project Description 
-   - Our App helps you whether there is a work-related task  or personal goal ,ToDOlist is here to manage all your to-dos.
+##   ✧ Description of our App
+   - Todo App is a simple and awesome app to organize your tasks with a very easy to use interface. Todo can help you to make a list of your tasks and track them.
 
-##  Team Members 
-      * Mutasem 
-      * Doaa Abdulslam
-      * Fatma Abu El-Fateh
-      * Mohammed Hasan 
 
-##   Users Stories
-   - Users will be able to
-     
-     * Add Tasks
-     * Mark them as Done
-     * Edit their tasks
-     * Remove Tasks
-     * Tasks totals and their status will be shown on the App
-## our Process to get App
+##  ✧ User Stories
+   - _As a user_, I should be able to add my to-do to the list and save it in local storage
+   - _As a user_, I should be able to edit my to-dos
+   - _As a user_, I should be able to remove any to-do from my list (remove it from local storage)
+   - _As a user_, I can still have my list even if I close the browser window
 
-## Add link
-    (live link ) [Git hub]  
-  https://github.com/GSG-FC03/Todolist-Team1
+## ✧ Technology we used:
+   - HTML → to build the structure of the pages     
+   - CSS →  to style the application
+   - JS|DOM Manipulations → To create interaction between the page and the user
+   - localStorage → to store the data
+
+
+## ✧ How to get and test our app:
+(later on )
+
+
+
+## ✧ link
+**[Git hub](https://github.com/GSG-FC03/Todolist-Team1).**
+
+  ## ✧ Team Members 
+1. [Mutasem Mansour](https://github.com/MMansour87).
+2. [Doaa Abdulslam](https://github.com/Doaa-Abdulsalam).
+3. [Fatma Abu El-Fateh](https://github.com/FatmaHossam5).
+4. [Mohammed Hasan](https://github.com/MohammedHasan-99).
