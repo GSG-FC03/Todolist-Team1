@@ -1,0 +1,92 @@
+html,body {
+    height:100%; }
+
+body {
+   background-color: #4044CA;
+   margin: 0vw;
+   padding: 0vw;
+}
+
+.title{
+   color:white;
+   font-weight: bold;
+   font-size: 40px;
+   margin: 70px 5vw 30px 5vw;
+   padding: 0vw
+}
+
+
+.topHeader{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin: 0vw 5vw
+}
+
+
+
+.unDoneBox, .doneBox {
+   display: flex;
+   justify-content: stretch;
+   align-items: center;
+   color:white
+}
+
+.icon1{
+   font-size: 35px;
+}
+
+.doneCount, .unDoneCount {
+   font-size: 30px;
+}
+
+.space{
+   width:2vw;
+}
+
+#addTaskButton{
+   color:#4044CA;
+   background-color: white;
+   border: none;
+   border-radius: 25px;
+   font-size: 20px;
+   font-weight: bold;
+   width: 40vw;
+   height: 70px;
+   
+}
+
+#addTaskButton:hover{
+   background-color: #d7d8eb;
+   width: 41vw;
+}
+
+#addTaskButton:active{
+   background-color:white;
+   width: 41vw;
+}
+
+
+
+
+.tasksDiv{
+display: flex;
+justify-content: flex-start;
+flex-direction: column;
+align-items: center;
+margin:  100px 0vw;
+padding: 5vw;
+background-color: white;
+height: 100%;
+border-radius: 10vw 0vw 0vw 0vw;
+
+}
+
+.task {
+width:80%;
+margin:10px;
+height: 70px;
+border-color:rgb(158, 140, 140) ;
+border-radius: 25px;
+background-color: rgb(207, 203, 207);
+}
