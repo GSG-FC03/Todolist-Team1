@@ -1,7 +1,7 @@
 html,
 body {
-  height: 83.2%;
   font-family: "Actor", sans-serif;
+  overflow:hidden;
 }
 
 * {
@@ -73,7 +73,7 @@ body {
   background-color: white;
   height: 100%;
   border-radius: 10vw 0vw 0vw 0vw;
-  overflow: auto;
+  overflow: scroll;
 }
 
 .task {
