@@ -1,11 +1,12 @@
 html,
 body {
-  font-family: "Actor", sans-serif;
-  overflow:hidden;
+  overflow: hidden;
+  background-color: #4044ca;
+  height: 100%;
 }
 
 * {
-  background-color: #4044ca;
+  font-family: "Actor", sans-serif;
   margin: 0vw;
   padding: 0vw;
 }
@@ -15,7 +16,7 @@ body {
   font-weight: bold;
   font-size: 40px;
   margin: 40px 5vw 10px 5vw;
-  }
+}
 
 .topHeader {
   display: flex;
@@ -77,10 +78,67 @@ body {
 }
 
 .task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 88%;
   margin: 10px 5vw;
   height: 70px;
   border-color: rgb(158, 140, 140);
-  border-radius: 25px;
-  background-color: rgb(207, 203, 207);
+  border-radius: 15px;
+  background-color: #f2f2f2;
+}
+.left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px 20px;
+}
+.right {
+  padding: 0px 20px;
+}
+.task_data {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+}
+.task-icon {
+  font-size: 20px;
+}
+.btn {
+  border: none;
+  background-color: transparent;
+}
+.delete-btn:hover {
+  color: red;
+}
+.edit-btn:hover {
+  color: #4044ca;
+}
+.check {
+  height: 30px;
+  width: 30px;
+  appearance: none;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+.check:checked {
+  background-color: #4044ca;
+  color: #99a1a7;
+}
+.check:checked:after {
+  content: "\2713";
+  font-size: 35px;
+  color: #ffffff;
+}
+.task-name {
+  font-size: 18px;
+  color: #4044ca;
+  font-weight: 600;
+}
+.due-date {
+  font-size: 15px;
 }
