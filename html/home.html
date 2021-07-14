@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Title and tab icon -->
+    <title>To Do List Team1</title>
+    <link rel="shortcut icon" type="image/x-icon" href="..\assets\to-do.png" />
+
+    <!-- This is for linking Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Actor&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- For linking with css -->
+    <link rel="stylesheet" href="..\css\home.css" />
+
+    <!-- this is for font Awsome icons -->
+    <script
+      src="https://kit.fontawesome.com/52e67ff79e.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <section class="title">To Do List</section>
+    <!-- This section contain the done, undone and add task header  -->
+    <section class="topHeader">
+      <!-- Done Icon + Count  -->
+      <div class="doneBox">
+        <i class="icon1 fas fa-check-circle"></i>
+        <h1 class="space"></h1>
+        <h1 id="doneCount">32</h1>
+        <!-- This one for linking with js -->
+      </div>
+
+      <!-- unDone Icon + Count  -->
+      <div class="unDoneBox">
+        <i class="icon1 fas fa-times-circle"></i>
+        <h1 class="space"></h1>
+        <h1 id="unDoneCount">32</h1>
+        <!-- This one for linking with js -->
+      </div>
+
+      <!-- add task buttin  -->
+      <button id="addTaskButton">Add Task</button>
+      <!-- This one for linking with js -->
+    </section>
+
+    <!-- This section to add tasks from local storage using JS -->
+    <section class="tasksDiv" behavior="slide">
+      <div class="task"></div>
+      <div class="task"></div>
+      <div class="task"></div>
+      <div class="task"></div>
+      <div class="task"></div>
+      <div class="task"></div>
+      <div class="task"></div>
+      <div class="task"></div>
+      <div class="task"></div>
+      <div class="task"></div>
+    </section>
+
+    <script src="..\script\main.js"></script>
+  </body>
+</html>
