@@ -4,7 +4,7 @@ body {
   font-family: "Actor", sans-serif;
 }
 
-body {
+* {
   background-color: #4044ca;
   margin: 0vw;
   padding: 0vw;
@@ -15,8 +15,7 @@ body {
   font-weight: bold;
   font-size: 40px;
   margin: 40px 5vw 10px 5vw;
-  padding: 0vw;
-}
+  }
 
 .topHeader {
   display: flex;
