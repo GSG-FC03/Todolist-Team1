@@ -51,6 +51,45 @@
       <!-- This one for linking with js -->
     </section>
 
+    <div id="addForm" class="popup-form">
+      <!-- Modal content -->
+      <div class="form-content">
+        <form action="#">
+          <section class="form-element">
+            <label for="task_name" class="pop-label">Task name</label>
+            <input type="text" id="task_name" name="task_name" class="field" />
+          </section>
+
+          <section class="form-element">
+            <label for="due_time" class="pop-label">Due time</label>
+            <input
+              type="datetime-local"
+              id="due_time"
+              name="due_time"
+              class="field"
+            />
+          </section>
+
+          <section class="form-element">
+            <label for="task_details" class="pop-label">Task details</label>
+            <input
+              type="text-area"
+              id="task_details"
+              name="task_details"
+              class="field"
+            />
+          </section>
+
+          <section class="form-buttons">
+            <button id="add" class="add">Add Task</button>
+            <button id="cancel" class="cancel" onclick="closeForm()">
+              Cancel
+            </button>
+          </section>
+        </form>
+      </div>
+    </div>
+
     <!-- This section to add tasks from local storage using JS -->
     <section class="tasksDiv" behavior="slide">
       <div class="task">
