@@ -38,7 +38,7 @@ add.onclick = function () {
     isDone: false,
   };
 
-  let temp; //declare temp variablee
+  let temp; //declare temp variable
 
   if (localStorage.getItem("tasks") === null) 
     temp = [];    //if there is no tasks array (initially), create an array for tasks
@@ -85,7 +85,10 @@ function list(){
 
     
     let due_sec = document.createElement("section");
-    let due = document.createTextNode(element.due_time);
+    let due = document.createElement("input");
+    due.type="datetime-local";
+    due.value=element.due_time;
+    due.readOnly=true;
     due_sec.className = "due-date";
     due_sec.append(due);
     
@@ -111,6 +114,6 @@ function list(){
     task.append(left,right);
 
     listDiv.appendChild(task);
-    console.log(element);
+    
   });
 }
