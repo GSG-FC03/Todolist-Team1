@@ -24,8 +24,12 @@ add.onclick = function () {
   let task_due = document.getElementById("due_time").value;
   let task_details = document.getElementById("task_details").value;
 
+  if (localStorage.getItem("count") === null)
+  localStorage.setItem("count",0) //if there is no counter yet in the local storage, create it
+
   let data = {
     //create object for each task data
+    id: localStorage.getItem("count"),
     name: task_name,
     due_time: task_due,
     details: task_details,
@@ -40,9 +44,13 @@ add.onclick = function () {
   else  // if there is already tasks array in the local storage bring it temporary to temp var
     temp = JSON.parse(localStorage.getItem("tasks"));
        
+  if(task_name != "" && task_due != ""){
+    temp.push(data); //appending the new task object to task array
 
-  temp.push(data); //appending the new task object to task array
+    localStorage.setItem("tasks", JSON.stringify(temp));
+    //replace tasks array in the local stirge with the new appended version
 
-  localStorage.setItem("tasks", JSON.stringify(temp));
-  //replace tasks array in the local stirge with the new appended version
+    localStorage.setItem("count",JSON.stringify(parseInt(data.id)+1));
+    //increment count for the next task
+  } 
 };
