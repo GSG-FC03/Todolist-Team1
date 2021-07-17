@@ -38,7 +38,7 @@ add.onclick = function () {
     isDone: false,
   };
 
-  let temp; //declare temp variable
+  let temp; //declare temp variablee
 
   if (localStorage.getItem("tasks") === null) 
     temp = [];    //if there is no tasks array (initially), create an array for tasks
