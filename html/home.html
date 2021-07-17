@@ -57,7 +57,7 @@
         <form action="#">
           <section class="form-element">
             <label for="task_name" class="pop-label">Task name</label>
-            <input type="text" id="task_name" name="task_name" class="field" />
+            <input type="text" id="task_name" name="task_name" class="field"  required/>
           </section>
 
           <section class="form-element">
@@ -67,6 +67,7 @@
               id="due_time"
               name="due_time"
               class="field"
+              required
             />
           </section>
 
@@ -92,81 +93,7 @@
 
     <!-- This section to add tasks from local storage using JS -->
     <section class="tasksDiv" behavior="slide">
-      <div class="task">
-        <section class="left">
-          <input
-            type="checkbox"
-            id="check"
-            class="check checkbox-effect checkbox-effect-4"
-          />
-          <section class="task_data">
-            <label for="task_name" id="name_label" class="task-name"
-              >Task Name</label
-            >
-            <label for="due_date" id="due_time_label" class="due-date"
-              >due date</label
-            >
-          </section>
-        </section>
-        <section class="right">
-          <button id="edit" class="btn edit-btn">
-            <i class="task-icon far fa-edit"></i>
-          </button>
-          <button id="delete" class="btn delete-btn">
-            <i class="task-icon fas fa-trash"></i>
-          </button>
-        </section>
-      </div>
-      <div class="task">
-        <section class="left">
-          <input
-            type="checkbox"
-            id="check"
-            class="check checkbox-effect checkbox-effect-4"
-          />
-          <section class="task_data">
-            <label for="task_name" id="name_label" class="task-name"
-              >Task Name</label
-            >
-            <label for="due_date" id="due_time_label" class="due-date"
-              >due date</label
-            >
-          </section>
-        </section>
-        <section class="right">
-          <button id="edit" class="btn edit-btn">
-            <i class="task-icon far fa-edit"></i>
-          </button>
-          <button id="delete" class="btn delete-btn">
-            <i class="task-icon fas fa-trash"></i>
-          </button>
-        </section>
-      </div>
-      <div class="task">
-        <section class="left">
-          <input
-            type="checkbox"
-            id="check"
-            class="check checkbox-effect checkbox-effect-4"
-          />
-          <section class="task_data">
-            <label for="task_name" id="name_label" class="task-name"
-              >Task Name</label
-            >
-            <label for="due_date" id="due_time_label" class="due-date"
-              >due date</label
-            >
-          </section>
-        </section>
-        <section class="right">
-          <button id="edit" class="btn edit-btn">
-            <i class="task-icon far fa-edit"></i>
-          </button>
-          <button id="delete" class="btn delete-btn">
-            <i class="task-icon fas fa-trash"></i>
-          </button>
-        </section>
-      </div>
+      
     </section>
 
     <script src="..\script\main.js"></script>
