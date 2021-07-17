@@ -2,6 +2,8 @@ let formBlock = document.getElementById("addForm");
 let btn = document.getElementById("addTaskButton");
 let cancel = document.getElementById("cancel");
 let add = document.getElementById("add");
+let listDiv = document.getElementsByClassName("tasksDiv")[0];
+
 
 // clicking on add task button will open the add task form
 btn.onclick = function () {
@@ -54,3 +56,61 @@ add.onclick = function () {
     //increment count for the next task
   } 
 };
+list();
+
+
+function list(){
+  let temp = JSON.parse(localStorage.getItem("tasks"));
+  temp.forEach(element => {
+    let task = document.createElement("section");
+    let left = document.createElement("section");
+    let right = document.createElement("section");
+    let task_data = document.createElement("task_data");
+
+    task.className = "task";
+    left.className = "left";
+    right.className = "right";
+    task_data.className = "task_data";
+
+
+    let checkBox = document.createElement("input");
+    checkBox.type = "checkbox";
+    checkBox.className = "check checkbox-effect checkbox-effect-4";
+    left.append(checkBox);
+
+    let name_sec = document.createElement("section");
+    let name = document.createTextNode(element.name);
+    name_sec.className = "task-name";
+    name_sec.append(name);
+
+    
+    let due_sec = document.createElement("section");
+    let due = document.createTextNode(element.due_time);
+    due_sec.className = "due-date";
+    due_sec.append(due);
+    
+    task_data.append(name_sec,due_sec);
+
+    left.append(task_data);
+
+    let edit = document.createElement("button");
+    edit.className = "btn edit-btn";
+    let icon = document.createElement("i");
+    icon.className = "task-icon far fa-edit";
+    edit.append(icon);
+
+    let remove = document.createElement("button");
+    remove.className = "btn delete-btn";
+    let icon2 = document.createElement("i");
+    icon2.className = "task-icon fas fa-trash";
+    remove.append(icon2);
+
+
+    right.append(edit,remove);
+
+    task.append(left,right);
+
+    listDiv.appendChild(task);
+    console.log(element);
+  });
+}
