@@ -14,11 +14,87 @@ cancel.onclick = function () {
   formBlock.style.display = "none";
 };
 
-//clicking anywhere outside of the form block will close it
+//Important: All Click actions save/edit/cancel/checkbox
 window.onclick = function (event) {
+  //---------->A. clicking anywhere outside of the form block will close it
   if (event.target == formBlock) {
     formBlock.style.display = "none";
   }
+
+//----------->B. if the clicked item is the edit button.
+else if (event.target.getAttribute("class") == "task-icon far fa-edit") {
+  // Change Button icon to save
+  event.target.setAttribute("class", "task-icon fas fa-save");
+  // expand task and make white with border
+  event.target.parentElement.parentElement.parentElement.style.height = "80px";
+  event.target.parentElement.parentElement.parentElement.style.backgroundColor = "white";
+  event.target.parentElement.parentElement.parentElement.style.border ="1px solid #4044ca";
+
+//   // changes in task name
+  event.target.parentElement.parentElement.parentElement.getElementsByClassName(
+    "task-name"
+  )[0].style.color = "black";
+  event.target.parentElement.parentElement.parentElement
+    .getElementsByClassName("task-name")[0]
+    .setAttribute("contenteditable", "true");
+  event.target.parentElement.parentElement.parentElement.getElementsByClassName(
+    "task-name"
+  )[0].style.borderBottom = "1px solid #4044ca";
+
+  // make changes in due date
+event.target.parentElement.parentElement.parentElement.getElementsByClassName("left")[0]
+.getElementsByClassName("due-date")[0].getElementsByClassName("due")[0].removeAttribute("readonly");
+
+  // remove check
+  event.target.parentElement.parentElement.parentElement.getElementsByClassName(
+    "check"
+  )[0].style.display = "none";}
+
+
+
+// -------------> c. if the clicked item is the save button.
+else if (event.target.getAttribute("class") == "task-icon fas fa-save") {
+  // Change Button icon to edit
+  event.target.setAttribute("class", "task-icon far fa-edit");
+
+// reset task to before click state
+  event.target.parentElement.parentElement.parentElement.style.height = "70px";
+  event.target.parentElement.parentElement.parentElement.style.backgroundColor =
+    "#f2f2f2";
+    event.target.parentElement.parentElement.parentElement.style.border = "none";
+
+
+  // reset taskname to before click state
+  event.target.parentElement.parentElement.parentElement.getElementsByClassName(
+    "task-name"
+  )[0].style.color = "#4044ca";
+  event.target.parentElement.parentElement.parentElement
+    .getElementsByClassName("task-name")[0]
+    .setAttribute("contenteditable", "false");
+  event.target.parentElement.parentElement.parentElement.getElementsByClassName(
+    "task-name"
+  )[0].style.borderBottom = "none";
+
+  // reset duedate to before click state
+event.target.parentElement.parentElement.parentElement.getElementsByClassName("left")[0]
+.getElementsByClassName("due-date")[0].getElementsByClassName("due")[0]
+.setAttribute("readonly", "true");
+
+//   // show check
+event.target.parentElement.parentElement.parentElement.getElementsByClassName(
+  "check"
+)[0].style.display = "flex";
+
+// Change the local storage
+
+let un= event.target.parentElement.parentElement.getElementsByTagName("label")[0].textContent;
+let n=event.target.parentElement.parentElement.parentElement.getElementsByClassName("task-name")[0].textContent;
+let dt=event.target.parentElement.parentElement.parentElement.getElementsByClassName("left")[0]
+.getElementsByClassName("due-date")[0].getElementsByClassName("due")[0].value;
+
+saveEdit(un,n,dt)}
+
+
 };
 
 add.onclick = function () {
@@ -56,6 +132,8 @@ add.onclick = function () {
     //increment count for the next task
   } 
 };
+
+// Evoke the function list
 list();
 
 
@@ -89,12 +167,17 @@ function list(){
     due.type="datetime-local";
     due.value=element.due_time;
     due.readOnly=true;
+    due.className = "due";
     due_sec.className = "due-date";
     due_sec.append(due);
     
     task_data.append(name_sec,due_sec);
 
     left.append(task_data);
+
+    let idLabel = document.createElement("label");
+    idLabel.className = "idLabel";
+    idLabel.textContent=element.id;
 
     let edit = document.createElement("button");
     edit.className = "btn edit-btn";
@@ -108,8 +191,9 @@ function list(){
     icon2.className = "task-icon fas fa-trash";
     remove.append(icon2);
 
+       
 
-    right.append(edit,remove);
+    right.append(idLabel,edit,remove);
 
     task.append(left,right);
 
@@ -118,6 +202,27 @@ function list(){
   });
 }
 
+
+
+
+function saveEdit(un,n,dt) {
+  // console.log(localStorage.getItem("tasks"))
+  let array=JSON.parse(localStorage.getItem("tasks"));
+  console.log(array);
+  let arrayFind=array.find((val)=>val.id==un);
+  // console.log(arrayFind);
+  let Idx= array.indexOf(arrayFind);
+  // console.log(Idx);
+  array[Idx].name=n;
+  // console.log(array[Idx].name)
+  array[Idx].due_time=dt;
+  // console.log(array[Idx].due_time)
+  localStorage.setItem("tasks",JSON.stringify(array))
+  // console.log(localStorage.getItem("tasks"))
+  }
+
+
+ 
 let countDone = 0;
 let countUnDone = 0;
 JSON.parse(localStorage.getItem("tasks")).forEach(element => {
