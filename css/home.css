@@ -2,7 +2,7 @@ html,
 body {
   /* overflow: hidden; */
   background-color: #4044ca;
-  height: 83.5%;
+  height: 83.15%;
 }
 
 * {
@@ -20,7 +20,7 @@ body {
 
 .topHeader {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   margin: 0vw 5vw;
 }
@@ -99,7 +99,7 @@ body {
   padding: 0px 20px 0px 0px;
   display: flex;
   justify-content: space-between;
-  width:12vw;
+  width:6vh;
 }
 .task_data {
   padding: 15px;
@@ -152,7 +152,7 @@ body {
   font-size: 14px;
   background-color: transparent;
   border:none;
-  width:181px;
+  width:184px;
   }
 
 .popup-form {
@@ -215,5 +215,5 @@ body {
 
 
 .idLabel{
-  display: block;
+  display: none;
 }

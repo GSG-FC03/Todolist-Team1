@@ -84,7 +84,18 @@ event.target.parentElement.parentElement.parentElement.getElementsByClassName("l
 event.target.parentElement.parentElement.parentElement.getElementsByClassName(
   "check"
 )[0].style.display = "flex";}
-// }
+
+let un= event.target.parentElement.parentElement.getElementsByTagName("label")[0].textContent;
+let n=event.target.parentElement.parentElement.parentElement.getElementsByClassName("task-name")[0].textContent;
+let dt=event.target.parentElement.parentElement.parentElement.getElementsByClassName("left")[0]
+.getElementsByClassName("due-date")[0].getElementsByClassName("due")[0].value;
+console.log(un)
+console.log(n)
+console.log(dt)
+
+// Change the local storage
+saveEdit(un,n,dt);
+
 
 };
 
@@ -196,16 +207,21 @@ function list(){
 
 
 
-// function saveEdit(un,n,dt) {
-//   let array=JSON.parse(localStorage.getItem("tasks"));
-//   let arrayFind=array.find((val)=>val.id==un);
-//   let Idx= array.indexOf(arrayFind);
-//   localStorage.getItem("tasks")[Idx].name=n;
-//   localStorage.getItem("tasks")[Idx].name=dt;
-// console.log(Idx);
-//   }
+function saveEdit(un,n,dt) {
+  // console.log(localStorage.getItem("tasks"))
+  let array=JSON.parse(localStorage.getItem("tasks"));
+  console.log(array);
+  let arrayFind=array.find((val)=>val.id==un);
+  // console.log(arrayFind);
+  let Idx= array.indexOf(arrayFind);
+  // console.log(Idx);
+  array[Idx].name=n;
+  // console.log(array[Idx].name)
+  array[Idx].due_time=dt;
+  // console.log(array[Idx].due_time)
+  localStorage.setItem("tasks",JSON.stringify(array))
+  // console.log(localStorage.getItem("tasks"))
+  }
 
 
-//   saveEdit("3","MMMM","12/5/2021")
-//   // console.log(JSON.parse(localStorage.getItem("tasks")))
  
