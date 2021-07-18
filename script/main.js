@@ -83,18 +83,16 @@ event.target.parentElement.parentElement.parentElement.getElementsByClassName("l
 //   // show check
 event.target.parentElement.parentElement.parentElement.getElementsByClassName(
   "check"
-)[0].style.display = "flex";}
+)[0].style.display = "flex";
+
+// Change the local storage
 
 let un= event.target.parentElement.parentElement.getElementsByTagName("label")[0].textContent;
 let n=event.target.parentElement.parentElement.parentElement.getElementsByClassName("task-name")[0].textContent;
 let dt=event.target.parentElement.parentElement.parentElement.getElementsByClassName("left")[0]
 .getElementsByClassName("due-date")[0].getElementsByClassName("due")[0].value;
-console.log(un)
-console.log(n)
-console.log(dt)
 
-// Change the local storage
-saveEdit(un,n,dt);
+saveEdit(un,n,dt)}
 
 
 };
@@ -225,3 +223,18 @@ function saveEdit(un,n,dt) {
 
 
  
+let countDone = 0;
+let countUnDone = 0;
+JSON.parse(localStorage.getItem("tasks")).forEach(element => {
+  
+  if(element.isDone == true)
+  countDone++;
+  else
+  countUnDone++;
+});
+
+let done = document.getElementById("doneCount");
+done.textContent = countDone;
+
+let unDone = document.getElementById("unDoneCount");
+unDone.textContent = countUnDone;
