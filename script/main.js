@@ -192,3 +192,20 @@ function list(){
     
   });
 }
+
+
+
+
+// function saveEdit(un,n,dt) {
+//   let array=JSON.parse(localStorage.getItem("tasks"));
+//   let arrayFind=array.find((val)=>val.id==un);
+//   let Idx= array.indexOf(arrayFind);
+//   localStorage.getItem("tasks")[Idx].name=n;
+//   localStorage.getItem("tasks")[Idx].name=dt;
+// console.log(Idx);
+//   }
+
+
+//   saveEdit("3","MMMM","12/5/2021")
+//   // console.log(JSON.parse(localStorage.getItem("tasks")))
+ 
