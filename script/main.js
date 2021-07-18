@@ -94,6 +94,15 @@ let dt=event.target.parentElement.parentElement.parentElement.getElementsByClass
 
 saveEdit(un,n,dt)}
 
+//Change isDone value in array with check checkbox
+
+else if (event.target.getAttribute("class") == "check checkbox-effect checkbox-effect-4"){
+  let bln=  event.target.checked;
+  let un= event.target.parentElement.parentElement.getElementsByClassName("right")[0].getElementsByTagName("label")[0].textContent;
+  isdone(un,bln);
+  console.log(bln);
+
+}
 
 };
 
@@ -154,6 +163,7 @@ function list(){
     let checkBox = document.createElement("input");
     checkBox.type = "checkbox";
     checkBox.className = "check checkbox-effect checkbox-effect-4";
+    element.id == false?checkBox.checked=false:checkBox.checked=true;
     left.append(checkBox);
 
     let name_sec = document.createElement("section");
@@ -221,7 +231,14 @@ function saveEdit(un,n,dt) {
   // console.log(localStorage.getItem("tasks"))
   }
 
-
+//Function of change isDone value in array
+  function isdone(un,bln) {
+    let array = JSON.parse(localStorage.getItem("tasks"));
+    let arrayFind =array.find((val)=>val.id==un);
+    let Idx= array.indexOf(arrayFind);
+    array[Idx].isDone = bln;
+    localStorage.setItem("tasks",JSON.stringify(array))
+        }
  
 let countDone = 0;
 let countUnDone = 0;
