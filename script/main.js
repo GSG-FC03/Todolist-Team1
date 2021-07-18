@@ -16,12 +16,12 @@ cancel.onclick = function () {
 
 //Important: All Click actions save/edit/cancel/checkbox
 window.onclick = function (event) {
-  //A. clicking anywhere outside of the form block will close it
+  //---------->A. clicking anywhere outside of the form block will close it
   if (event.target == formBlock) {
     formBlock.style.display = "none";
   }
 
-//B. if the clicked item is the edit button.
+//----------->B. if the clicked item is the edit button.
 else if (event.target.getAttribute("class") == "task-icon far fa-edit") {
   // Change Button icon to save
   event.target.setAttribute("class", "task-icon fas fa-save");
@@ -41,13 +41,9 @@ else if (event.target.getAttribute("class") == "task-icon far fa-edit") {
     "task-name"
   )[0].style.borderBottom = "1px solid #4044ca";
 
-//   // changes in due date
-  event.target.parentElement.parentElement.parentElement.getElementsByClassName(
-    "due-date"
-  )[0].style.border = "none";
-  event.target.parentElement.parentElement.parentElement.parentElement.getElementsByClassName("left")[0]
-    .getElementsByClassName("due-date")[0].getElementsByTagName("input")[0]
-    .removeAttribute("readonly");
+  // make changes in due date
+event.target.parentElement.parentElement.parentElement.getElementsByClassName("left")[0]
+.getElementsByClassName("due-date")[0].getElementsByClassName("due")[0].removeAttribute("readonly");
 
   // remove check
   event.target.parentElement.parentElement.parentElement.getElementsByClassName(
@@ -56,19 +52,19 @@ else if (event.target.getAttribute("class") == "task-icon far fa-edit") {
 
 
 
-// //B. if the clicked item is the save button.
+// -------------> c. if the clicked item is the save button.
 else if (event.target.getAttribute("class") == "task-icon fas fa-save") {
   // Change Button icon to edit
   event.target.setAttribute("class", "task-icon far fa-edit");
 
-//   // reset task to before click state
+// reset task to before click state
   event.target.parentElement.parentElement.parentElement.style.height = "70px";
   event.target.parentElement.parentElement.parentElement.style.backgroundColor =
     "#f2f2f2";
     event.target.parentElement.parentElement.parentElement.style.border = "none";
 
 
-//   // reset taskname to before click state
+  // reset taskname to before click state
   event.target.parentElement.parentElement.parentElement.getElementsByClassName(
     "task-name"
   )[0].style.color = "#4044ca";
@@ -77,22 +73,18 @@ else if (event.target.getAttribute("class") == "task-icon fas fa-save") {
     .setAttribute("contenteditable", "false");
   event.target.parentElement.parentElement.parentElement.getElementsByClassName(
     "task-name"
-  )[0].style.borderBottom = "none";}
+  )[0].style.borderBottom = "none";
 
-//   // reset duedate to before click state
-//   evt.target.parentElement.parentElement.parentElement
-//     .getElementsByClassName("due-date")[0]
-//     .setAttribute("readonly", "true");
-//   evt.target.parentElement.parentElement.parentElement.getElementsByClassName(
-//     "due-date"
-//   )[0].style.border = "none";
+  // reset duedate to before click state
+event.target.parentElement.parentElement.parentElement.getElementsByClassName("left")[0]
+.getElementsByClassName("due-date")[0].getElementsByClassName("due")[0]
+.setAttribute("readonly", "true");
 
 //   // show check
-//   evt.target.parentElement.parentElement.parentElement.getElementsByClassName(
-//     "check"
-//   )[0].style.display = "flex";
+event.target.parentElement.parentElement.parentElement.getElementsByClassName(
+  "check"
+)[0].style.display = "flex";}
 // }
-
 
 };
 
@@ -166,6 +158,7 @@ function list(){
     due.type="datetime-local";
     due.value=element.due_time;
     due.readOnly=true;
+    due.className = "due";
     due_sec.className = "due-date";
     due_sec.append(due);
     
