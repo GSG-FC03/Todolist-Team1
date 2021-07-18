@@ -100,10 +100,11 @@ else if (event.target.getAttribute("class") == "check checkbox-effect checkbox-e
   let bln=  event.target.checked;
   let un= event.target.parentElement.parentElement.getElementsByClassName("right")[0].getElementsByTagName("label")[0].textContent;
   isdone(un,bln);
-  console.log(bln);
+
 
 }
-
+//Evoke the callCount function so the counter update
+callCount();
 };
 
 add.onclick = function () {
@@ -240,6 +241,9 @@ function saveEdit(un,n,dt) {
     localStorage.setItem("tasks",JSON.stringify(array))
         }
  
+
+//callCount function
+function callCount(){
 let countDone = 0;
 let countUnDone = 0;
 JSON.parse(localStorage.getItem("tasks")).forEach(element => {
@@ -255,3 +259,5 @@ done.textContent = countDone;
 
 let unDone = document.getElementById("unDoneCount");
 unDone.textContent = countUnDone;
+}
+callCount();
