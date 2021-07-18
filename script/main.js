@@ -14,11 +14,86 @@ cancel.onclick = function () {
   formBlock.style.display = "none";
 };
 
-//clicking anywhere outside of the form block will close it
+//Important: All Click actions save/edit/cancel/checkbox
 window.onclick = function (event) {
+  //A. clicking anywhere outside of the form block will close it
   if (event.target == formBlock) {
     formBlock.style.display = "none";
   }
+
+//B. if the clicked item is the edit button.
+else if (event.target.getAttribute("class") == "task-icon far fa-edit") {
+  // Change Button icon to save
+  event.target.setAttribute("class", "task-icon fas fa-save");
+  // expand task and make white with border
+  event.target.parentElement.parentElement.parentElement.style.height = "80px";
+  event.target.parentElement.parentElement.parentElement.style.backgroundColor = "white";
+  event.target.parentElement.parentElement.parentElement.style.border ="1px solid #4044ca";
+
+//   // changes in task name
+  event.target.parentElement.parentElement.parentElement.getElementsByClassName(
+    "task-name"
+  )[0].style.color = "black";
+  event.target.parentElement.parentElement.parentElement
+    .getElementsByClassName("task-name")[0]
+    .setAttribute("contenteditable", "true");
+  event.target.parentElement.parentElement.parentElement.getElementsByClassName(
+    "task-name"
+  )[0].style.borderBottom = "1px solid #4044ca";
+
+//   // changes in due date
+  event.target.parentElement.parentElement.parentElement.getElementsByClassName(
+    "due-date"
+  )[0].style.border = "none";
+  event.target.parentElement.parentElement.parentElement.parentElement.getElementsByClassName("left")[0]
+    .getElementsByClassName("due-date")[0].getElementsByTagName("input")[0]
+    .removeAttribute("readonly");
+
+  // remove check
+  event.target.parentElement.parentElement.parentElement.getElementsByClassName(
+    "check"
+  )[0].style.display = "none";}
+
+
+
+// //B. if the clicked item is the save button.
+else if (event.target.getAttribute("class") == "task-icon fas fa-save") {
+  // Change Button icon to edit
+  event.target.setAttribute("class", "task-icon far fa-edit");
+
+//   // reset task to before click state
+  event.target.parentElement.parentElement.parentElement.style.height = "70px";
+  event.target.parentElement.parentElement.parentElement.style.backgroundColor =
+    "#f2f2f2";
+    event.target.parentElement.parentElement.parentElement.style.border = "none";
+
+
+//   // reset taskname to before click state
+  event.target.parentElement.parentElement.parentElement.getElementsByClassName(
+    "task-name"
+  )[0].style.color = "#4044ca";
+  event.target.parentElement.parentElement.parentElement
+    .getElementsByClassName("task-name")[0]
+    .setAttribute("contenteditable", "false");
+  event.target.parentElement.parentElement.parentElement.getElementsByClassName(
+    "task-name"
+  )[0].style.borderBottom = "none";}
+
+//   // reset duedate to before click state
+//   evt.target.parentElement.parentElement.parentElement
+//     .getElementsByClassName("due-date")[0]
+//     .setAttribute("readonly", "true");
+//   evt.target.parentElement.parentElement.parentElement.getElementsByClassName(
+//     "due-date"
+//   )[0].style.border = "none";
+
+//   // show check
+//   evt.target.parentElement.parentElement.parentElement.getElementsByClassName(
+//     "check"
+//   )[0].style.display = "flex";
+// }
+
+
 };
 
 add.onclick = function () {
@@ -56,6 +131,8 @@ add.onclick = function () {
     //increment count for the next task
   } 
 };
+
+// Evoke the function list
 list();
 
 
@@ -96,6 +173,10 @@ function list(){
 
     left.append(task_data);
 
+    let idLabel = document.createElement("label");
+    idLabel.className = "idLabel";
+    idLabel.textContent=element.id;
+
     let edit = document.createElement("button");
     edit.className = "btn edit-btn";
     let icon = document.createElement("i");
@@ -108,8 +189,9 @@ function list(){
     icon2.className = "task-icon fas fa-trash";
     remove.append(icon2);
 
+       
 
-    right.append(edit,remove);
+    right.append(idLabel,edit,remove);
 
     task.append(left,right);
 
