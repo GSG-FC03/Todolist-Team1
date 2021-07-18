@@ -1,8 +1,8 @@
 html,
 body {
-  overflow: hidden;
+  /* overflow: hidden; */
   background-color: #4044ca;
-  height: 100%;
+  height: 83.5%;
 }
 
 * {
@@ -81,8 +81,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 88%;
-  margin: 10px 5vw;
+  width: 95%;
+  margin: 12px 2.5vw;
   height: 70px;
   border-color: rgb(158, 140, 140);
   border-radius: 15px;
@@ -95,7 +95,10 @@ body {
   padding: 0px 20px;
 }
 .right {
-  padding: 0px 20px;
+  padding: 0px 20px 0px 0px;
+  display: flex;
+  justify-content: space-between;
+  width:12vw;
 }
 .task_data {
   padding: 15px;
@@ -141,7 +144,14 @@ body {
 }
 .due-date {
   font-size: 15px;
+  width:0vw;
 }
+
+.due-date > input{
+  font-size: 14px;
+  background-color: transparent;
+  border:none;
+  }
 
 .popup-form {
   display: none;
@@ -164,6 +174,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 25px;
 }
 .form-element {
   margin: 25px;
