@@ -117,3 +117,19 @@ function list(){
     
   });
 }
+
+let countDone = 0;
+let countUnDone = 0;
+JSON.parse(localStorage.getItem("tasks")).forEach(element => {
+  
+  if(element.isDone == true)
+  countDone++;
+  else
+  countUnDone++;
+});
+
+let done = document.getElementById("doneCount");
+done.textContent = countDone;
+
+let unDone = document.getElementById("unDoneCount");
+unDone.textContent = countUnDone;
