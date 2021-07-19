@@ -20,14 +20,22 @@
    - localStorage → to store the data
 
 
-## ✧ How to get and test our app:
-(later on )
+## ✧ installing the project locally:
+   - git clone https://github.com/GSG-FC03/Todolist-Team1.git
+   - cd Todolist-Team1
+   - code .
+   
 
 
 
 ## ✧ link
 **[Git hub](https://github.com/GSG-FC03/Todolist-Team1).**
 
+**[live link](https://gsg-fc03.github.io/Todolist-Team1/)
+.**
+
+##  ✧ Main Page Design
+![photo](./assets/design.jpg)
   ## ✧ Team Members 
 1. [Mutasem Mansour](https://github.com/MMansour87).
 2. [Doaa Abdulslam](https://github.com/Doaa-Abdulsalam).
