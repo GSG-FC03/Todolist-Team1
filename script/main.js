@@ -30,7 +30,7 @@ else if (event.target.getAttribute("class") == "task-icon far fa-edit") {
   event.target.parentElement.parentElement.parentElement.style.backgroundColor = "white";
   event.target.parentElement.parentElement.parentElement.style.border ="1px solid #4044ca";
 
-//   // changes in task name
+// Changes in task name
   event.target.parentElement.parentElement.parentElement.getElementsByClassName(
     "task-name"
   )[0].style.color = "black";
@@ -41,7 +41,7 @@ else if (event.target.getAttribute("class") == "task-icon far fa-edit") {
     "task-name"
   )[0].style.borderBottom = "1px solid #4044ca";
 
-  // make changes in due date
+  // Make changes in due date
 event.target.parentElement.parentElement.parentElement.getElementsByClassName("left")[0]
 .getElementsByClassName("due-date")[0].getElementsByClassName("due")[0].removeAttribute("readonly");
 
@@ -105,7 +105,17 @@ remTask(un)
 event.target.parentElement.parentElement.parentElement.remove();
 }
 
+//--------------> E. Change isDone value in array with check checkbox
 
+else if (event.target.getAttribute("class") == "check checkbox-effect checkbox-effect-4"){
+  let bln=  event.target.checked;
+  let un= event.target.parentElement.parentElement.getElementsByClassName("right")[0].getElementsByTagName("label")[0].textContent;
+  isdone(un,bln);
+
+
+}
+//Evoke the callCount function so the counter update
+callCount();
 };
 
 add.onclick = function () {
@@ -142,6 +152,7 @@ add.onclick = function () {
     localStorage.setItem("count",JSON.stringify(parseInt(data.id)+1));
     //increment count for the next task
   } 
+
 };
 
 // Evoke the function list
@@ -165,6 +176,7 @@ function list(){
     let checkBox = document.createElement("input");
     checkBox.type = "checkbox";
     checkBox.className = "check checkbox-effect checkbox-effect-4";
+    // element.id == false?checkBox.checked=false:checkBox.checked=true;
     left.append(checkBox);
 
     let name_sec = document.createElement("section");
@@ -217,23 +229,27 @@ function list(){
 
 
 function saveEdit(un,n,dt) {
-  // console.log(localStorage.getItem("tasks"))
   let array=JSON.parse(localStorage.getItem("tasks"));
   console.log(array);
   let arrayFind=array.find((val)=>val.id==un);
-  // console.log(arrayFind);
   let Idx= array.indexOf(arrayFind);
-  // console.log(Idx);
   array[Idx].name=n;
-  // console.log(array[Idx].name)
   array[Idx].due_time=dt;
-  // console.log(array[Idx].due_time)
   localStorage.setItem("tasks",JSON.stringify(array))
-  // console.log(localStorage.getItem("tasks"))
   }
 
-
+//Function of change isDone value in array
+  function isdone(un,bln) {
+    let array = JSON.parse(localStorage.getItem("tasks"));
+    let arrayFind =array.find((val)=>val.id==un);
+    let Idx= array.indexOf(arrayFind);
+    array[Idx].isDone = bln;
+    localStorage.setItem("tasks",JSON.stringify(array))
+        }
  
+
+//callCount function
+function callCount(){
 let countDone = 0;
 let countUnDone = 0;
 JSON.parse(localStorage.getItem("tasks")).forEach(element => {
@@ -249,7 +265,7 @@ done.textContent = countDone;
 
 let unDone = document.getElementById("unDoneCount");
 unDone.textContent = countUnDone;
-
+}
 
 function remTask(un) {
   let array=JSON.parse(localStorage.getItem("tasks"));
@@ -259,3 +275,5 @@ function remTask(un) {
   array.splice(Idx,1);
   localStorage.setItem("tasks",JSON.stringify(array))
   }
+
+callCount();
