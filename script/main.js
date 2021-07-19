@@ -94,6 +94,17 @@ let dt=event.target.parentElement.parentElement.parentElement.getElementsByClass
 
 saveEdit(un,n,dt)}
 
+// -------------> D. if the clicked item is the delete button.
+else if (event.target.getAttribute("class") == "task-icon fas fa-trash") {
+
+// Change the local storage
+let un= event.target.parentElement.parentElement.getElementsByTagName("label")[0].textContent;
+remTask(un)
+
+// remove task from node tree
+event.target.parentElement.parentElement.parentElement.remove();
+}
+
 
 };
 
@@ -238,3 +249,13 @@ done.textContent = countDone;
 
 let unDone = document.getElementById("unDoneCount");
 unDone.textContent = countUnDone;
+
+
+function remTask(un) {
+  let array=JSON.parse(localStorage.getItem("tasks"));
+  console.log(array);
+  let arrayFind=array.find((val)=>val.id==un);
+  let Idx= array.indexOf(arrayFind);
+  array.splice(Idx,1);
+  localStorage.setItem("tasks",JSON.stringify(array))
+  }
