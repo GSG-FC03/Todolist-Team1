@@ -30,7 +30,7 @@ else if (event.target.getAttribute("class") == "task-icon far fa-edit") {
   event.target.parentElement.parentElement.parentElement.style.backgroundColor = "white";
   event.target.parentElement.parentElement.parentElement.style.border ="1px solid #4044ca";
 
-//   // changes in task name
+// Changes in task name
   event.target.parentElement.parentElement.parentElement.getElementsByClassName(
     "task-name"
   )[0].style.color = "black";
@@ -41,7 +41,7 @@ else if (event.target.getAttribute("class") == "task-icon far fa-edit") {
     "task-name"
   )[0].style.borderBottom = "1px solid #4044ca";
 
-  // make changes in due date
+  // Make changes in due date
 event.target.parentElement.parentElement.parentElement.getElementsByClassName("left")[0]
 .getElementsByClassName("due-date")[0].getElementsByClassName("due")[0].removeAttribute("readonly");
 
@@ -94,7 +94,18 @@ let dt=event.target.parentElement.parentElement.parentElement.getElementsByClass
 
 saveEdit(un,n,dt)}
 
-//Change isDone value in array with check checkbox
+// -------------> D. if the clicked item is the delete button.
+else if (event.target.getAttribute("class") == "task-icon fas fa-trash") {
+
+// Change the local storage
+let un= event.target.parentElement.parentElement.getElementsByTagName("label")[0].textContent;
+remTask(un)
+
+// remove task from node tree
+event.target.parentElement.parentElement.parentElement.remove();
+}
+
+//--------------> E. Change isDone value in array with check checkbox
 
 else if (event.target.getAttribute("class") == "check checkbox-effect checkbox-effect-4"){
   let bln=  event.target.checked;
@@ -141,6 +152,7 @@ add.onclick = function () {
     localStorage.setItem("count",JSON.stringify(parseInt(data.id)+1));
     //increment count for the next task
   } 
+
 };
 
 // Evoke the function list
@@ -164,7 +176,7 @@ function list(){
     let checkBox = document.createElement("input");
     checkBox.type = "checkbox";
     checkBox.className = "check checkbox-effect checkbox-effect-4";
-    element.id == false?checkBox.checked=false:checkBox.checked=true;
+    // element.id == false?checkBox.checked=false:checkBox.checked=true;
     left.append(checkBox);
 
     let name_sec = document.createElement("section");
@@ -217,19 +229,13 @@ function list(){
 
 
 function saveEdit(un,n,dt) {
-  // console.log(localStorage.getItem("tasks"))
   let array=JSON.parse(localStorage.getItem("tasks"));
   console.log(array);
   let arrayFind=array.find((val)=>val.id==un);
-  // console.log(arrayFind);
   let Idx= array.indexOf(arrayFind);
-  // console.log(Idx);
   array[Idx].name=n;
-  // console.log(array[Idx].name)
   array[Idx].due_time=dt;
-  // console.log(array[Idx].due_time)
   localStorage.setItem("tasks",JSON.stringify(array))
-  // console.log(localStorage.getItem("tasks"))
   }
 
 //Function of change isDone value in array
@@ -260,4 +266,14 @@ done.textContent = countDone;
 let unDone = document.getElementById("unDoneCount");
 unDone.textContent = countUnDone;
 }
+
+function remTask(un) {
+  let array=JSON.parse(localStorage.getItem("tasks"));
+  console.log(array);
+  let arrayFind=array.find((val)=>val.id==un);
+  let Idx= array.indexOf(arrayFind);
+  array.splice(Idx,1);
+  localStorage.setItem("tasks",JSON.stringify(array))
+  }
+
 callCount();
