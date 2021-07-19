@@ -143,6 +143,12 @@ body {
   color: #4044ca;
   font-weight: 600;
 }
+.task-name-checked {
+  font-size: 18px;
+  color: #545457;
+  text-decoration: line-through;
+  font-weight: 600;
+}
 .due-date {
   font-size: 15px;
   width:0vw;

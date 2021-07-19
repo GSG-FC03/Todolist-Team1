@@ -111,8 +111,10 @@ else if (event.target.getAttribute("class") == "check checkbox-effect checkbox-e
   let bln=  event.target.checked;
   let un= event.target.parentElement.parentElement.getElementsByClassName("right")[0].getElementsByTagName("label")[0].textContent;
   isdone(un,bln);
-
-
+  if(bln)
+    event.target.parentElement.getElementsByClassName("task-name")[0].className = "task-name-checked";
+  else
+    event.target.parentElement.getElementsByClassName("task-name-checked")[0].className = "task-name";
 }
 //Evoke the callCount function so the counter update
 callCount();
@@ -176,12 +178,11 @@ function list(){
     let checkBox = document.createElement("input");
     checkBox.type = "checkbox";
     checkBox.className = "check checkbox-effect checkbox-effect-4";
-    // element.id == false?checkBox.checked=false:checkBox.checked=true;
+    element.isDone == false?checkBox.checked=false:checkBox.checked=true;
     left.append(checkBox);
-
     let name_sec = document.createElement("section");
     let name = document.createTextNode(element.name);
-    name_sec.className = "task-name";
+    name_sec.className = element.isDone?"task-name-checked":"task-name";
     name_sec.append(name);
 
     
@@ -245,7 +246,7 @@ function saveEdit(un,n,dt) {
     let Idx= array.indexOf(arrayFind);
     array[Idx].isDone = bln;
     localStorage.setItem("tasks",JSON.stringify(array))
-        }
+  }
  
 
 //callCount function
